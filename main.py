@@ -29,7 +29,13 @@ env_only_pic = os.environ.get("INPUT_IF_ONLY_PIC")
 if env_get_type not in ['tweets', 'likes', 'both']:
     print('[warn] env_get_type = {} , set to default value "tweets"'.format(env_get_type))
     env_get_type = 'tweets'
-if env_only_pic not in [True, False]:
+if env_only_pic in [True, 'True', 'true']:
+    print('[debug] env_only_pic = {} , set to True'.format(env_only_pic))
+    env_only_pic = True
+elif env_only_pic in [False, 'False', 'false']:
+    print('[debug] env_only_pic = {} , set to False'.format(env_only_pic))
+    env_only_pic = False
+else:
     print('[warn] env_only_pic = {} , set to default value False'.format(env_only_pic))
     env_only_pic = False
 print('[debug] env_github_workspace = {}'.format(env_github_workspace))
