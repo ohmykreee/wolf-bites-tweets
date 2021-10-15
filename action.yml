@@ -1,0 +1,30 @@
+name: 'Wolf Bites Tweets'
+description: 'Using twitter api to get tweets a user liked or tweeted and save as json files.'
+
+branding:
+  icon: 'refresh-ccw'
+  color: 'purple'
+
+inputs:
+  screen_name:
+    description: 'The screen name of the twitter account.'
+    required: true
+  bearer_token:
+    description: 'The bearer token from your twitter dev account.'
+    required: true
+  get_type:
+    description: 'What kind of data you want to get.[tweets, likes, both]'
+    default: 'tweets'
+    required: false
+  count:
+    description: 'How many tweets you want to get.'
+    default: '10'
+    required: false
+  if_only_pic:
+    description: 'Do you want your result only contain tweets that contain media.'
+    default: false
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
