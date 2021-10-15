@@ -32,7 +32,7 @@ def get(screen_name, query_header, count, only_pic, output_dic):
         exit(2)
     print('[debug] successfully get {} tweets from get_tweets.get()'.format(len(query_list['data'])))
 
-    # if only_pic is Ture, omit tweets that don't contain pic
+    # if only_pic is True, omit tweets that don't contain pic
     if only_pic:
         query_list_output = copy.deepcopy(query_list)  # need deep copy!
         for i in range(0, len(query_list['data'])):

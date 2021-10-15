@@ -19,7 +19,7 @@ def get(screen_name, query_header, count, only_pic, output_dic):
         exit(3)
     print('[debug] successfully get {} tweets from get_likes.get()'.format(len(query_list)))
 
-    # if only_pic is Ture, omit tweets that don't contain pic
+    # if only_pic is True, omit tweets that don't contain pic
     if only_pic:
         query_list_output = []
         for i in range(0, len(query_list)):
