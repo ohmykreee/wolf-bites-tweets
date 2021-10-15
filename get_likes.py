@@ -12,7 +12,7 @@ def get(screen_name, query_header, count, only_pic, output_dic):
     query_list_raw = requests.get('https://api.twitter.com/1.1/favorites/list.json', headers=query_header, params=query_payload)
     query_list = json.loads(query_list_raw.content)
     if 'errors' in query_list:
-        print('[error] twitter api error, code {}, message: {}'.format(query_list['errors'][0]['code'], query_list['errors'][0]['message']))
+        print('[error] twitter api error, message: {}'.format(query_list['errors'][0]['message']))
         exit(3)
     if len(query_list) == 0:
         print('[error] get_likes.get(): query_list is empty')
@@ -36,4 +36,4 @@ def get(screen_name, query_header, count, only_pic, output_dic):
     json_file = open(output_dic + '/output/{}_likes.json'.format(screen_name), 'w+')
     json_file.write(output_json)
     json_file.close()
-    print('[debug] successfully write output_json to $github_workspace/output/$twitter_likes.json')
+    print('[debug] successfully write output_json to {}/output/{}_likes.json'.format(output_dic, screen_name))
