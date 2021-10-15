@@ -1,7 +1,5 @@
 FROM python:3.9-alpine
 
-ADD requirements.txt /requirements.txt
-
 ADD main.py /main.py
 
 ADD get_tweets.py /get_tweets.py
