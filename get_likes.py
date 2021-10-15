@@ -25,7 +25,7 @@ def get(screen_name, query_header, count, only_pic, output_dic):
         for i in range(0, len(query_list)):
             if 'media' in query_list[i]['entities']:
                 query_list_output.append(query_list[i])
-        print('[debug] omit {} tweets that do not contain any pic'.format(len(query_list) - len(query_list_output)))
+        print('[debug] get_likes: omit {} tweets that do not contain any media'.format(len(query_list) - len(query_list_output)))
     else:
         query_list_output = query_list
 
@@ -36,4 +36,4 @@ def get(screen_name, query_header, count, only_pic, output_dic):
     json_file = open(output_dic + '/output/{}_likes.json'.format(screen_name), 'w+')
     json_file.write(output_json)
     json_file.close()
-    print('[debug] successfully write output_json to {}/output/{}_likes.json'.format(output_dic, screen_name))
+    print('[info] successfully write output_json to {}/output/{}_likes.json'.format(output_dic, screen_name))

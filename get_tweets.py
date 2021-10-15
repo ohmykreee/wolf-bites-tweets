@@ -38,7 +38,7 @@ def get(screen_name, query_header, count, only_pic, output_dic):
         for i in range(0, len(query_list['data'])):
             if 'attachments' not in query_list['data'][i]:
                 query_list_output['data'].pop(i)
-        print('[debug] omit {} tweets that do not contain any pic'.format(len(query_list['data']) - len(query_list_output['data'])))
+        print('[debug] get_tweets: omit {} tweets that do not contain any media'.format(len(query_list['data']) - len(query_list_output['data'])))
     else:
         query_list_output = query_list
 
@@ -49,4 +49,4 @@ def get(screen_name, query_header, count, only_pic, output_dic):
     json_file = open(output_dic + '/output/{}_tweets.json'.format(screen_name), 'w+')
     json_file.write(output_json)
     json_file.close()
-    print('[debug] successfully write output_json to {}/output/{}_tweets.json'.format(output_dic, screen_name))
+    print('[info] successfully write output_json to {}/output/{}_tweets.json'.format(output_dic, screen_name))
