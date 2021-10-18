@@ -17,15 +17,15 @@ def get(screen_name, query_header, count, only_pic, output_dic):
     if len(query_list) == 0:
         print('[error] get_likes.get(): query_list is empty')
         exit(3)
-    print('[debug] successfully get {} tweets from get_likes.get()'.format(len(query_list)))
+    print('[info] successfully get {} tweets from get_likes.get()'.format(len(query_list)))
 
-    # if only_pic is True, omit tweets that don't contain pic
+    # if only_pic is True, omit tweets that don't contain media
     if only_pic:
         query_list_output = []
         for i in range(0, len(query_list)):
             if 'media' in query_list[i]['entities']:
                 query_list_output.append(query_list[i])
-        print('[debug] get_likes: omit {} tweets that do not contain any media'.format(len(query_list) - len(query_list_output)))
+        print('[info] get_likes: omit {} tweets that do not contain any media'.format(len(query_list) - len(query_list_output)))
     else:
         query_list_output = query_list
 

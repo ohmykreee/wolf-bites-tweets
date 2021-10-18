@@ -1,7 +1,6 @@
 import os
 import json
 import requests
-import copy
 
 
 def get(screen_name, query_header, count, only_pic, output_dic):
@@ -30,17 +29,30 @@ def get(screen_name, query_header, count, only_pic, output_dic):
     if len(query_list['data']) == 0:
         print('[error] get_tweets.get(): query_list is empty')
         exit(2)
-    print('[debug] successfully get {} tweets from get_tweets.get()'.format(len(query_list['data'])))
+    print('[info] successfully get {} tweets from get_tweets.get()'.format(len(query_list['data'])))
 
-    # if only_pic is True, omit tweets that don't contain pic
+    # if only_pic is True, omit tweets that don't contain media
+    query_list_output = {
+        'data': [],
+        'meta': query_list['meta']
+    }
+    for i in range(0, len(query_list['data'])):
+        if 'attachments' in query_list['data'][i]:
+            query_list_output['data'].append(query_list['data'][i])  # move basic data
+            query_list_output['data'][-1]['attachments']['media'] = []  # create list to hold extended media data
+            # start to move "media" section
+            media_keys = query_list['data'][i]['attachments']['media_keys']
+            for keys in media_keys:
+                for j in range(0, len(query_list['includes']['media'])):  # a safer way to do this? not hard-coding to index 0 but decrease speed
+                    if keys == query_list['includes']['media'][j]['media_key']:
+                        query_list_output['data'][-1]['attachments']['media'].append(query_list['includes']['media'][j])  # this perform move
+                        query_list['includes']['media'].pop(j)
+                        break
+        else:
+            if not only_pic:
+                query_list_output['data'].append(query_list['data'][i])
     if only_pic:
-        query_list_output = copy.deepcopy(query_list)  # need deep copy!
-        for i in range(0, len(query_list['data'])):
-            if 'attachments' not in query_list['data'][i]:
-                query_list_output['data'].pop(i)
-        print('[debug] get_tweets: omit {} tweets that do not contain any media'.format(len(query_list['data']) - len(query_list_output['data'])))
-    else:
-        query_list_output = query_list
+        print('[info] get_tweets: omit {} tweets that do not contain any media'.format(len(query_list['data']) - len(query_list_output['data'])))
 
     # output file to $github_workspace/output/$twitter_tweets.json
     output_json = json.dumps(query_list_output)
