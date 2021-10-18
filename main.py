@@ -13,7 +13,7 @@ import get_tweets
 # env_bearer_token = envLines[1][:-1]
 # env_get_type = envLines[2][:-1]
 # env_count = envLines[3][:-1]
-# env_only_pic = envLines[4][:-1]
+# env_only_pic = bool(envLines[4][:-1])
 # env_github_workspace = envLines[5]
 # os.environ["https_proxy"] = 'http://localhost:7890'
 
@@ -47,7 +47,7 @@ test_query = json.loads(test_query_raw.content)
 if 'errors' in test_query:
     print('[error] twitter api error, message: {}'.format(test_query['errors'][0]['message']))
     exit(1)
-print('[info] test token validity success')
+print('[debug] test token validity success')
 
 # start get data and store json file to $env_github_workspace/output
 if env_get_type == 'tweets':
