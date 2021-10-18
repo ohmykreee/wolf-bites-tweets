@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run wolf-bites-tweets
-        uses: ohmykreee/wolf-bites-tweets@1.0.0
+        uses: ohmykreee/wolf-bites-tweets@1.0.5
         with:
           screen_name: kreeejiang
           bearer_token: ${{ secrets.BEARER_TOKEN }}
@@ -40,7 +40,7 @@ The default value is `tweets` if not pass any value to it.
 
 - count   
 The number it will get from the API, both for `get_tweets` and `get_likes`. Please notice that there are max limitation in API `/2/users/:id/tweets` (100) and `/1.1/favorites/list.json` (200) and min limitation in `/2/users/:id/tweets` (5), or you will get error when running.   
-For more information please refer to Twitter's official API [GET /2/users/:id/tweets](https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets) and [GET /1.1/favorites/list.json](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/post-and-engage/api-reference/get-favorites-list).   
+For more information please refer to Twitter's official API documents [GET /2/users/:id/tweets](https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets) and [GET /1.1/favorites/list.json](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/post-and-engage/api-reference/get-favorites-list).   
 The default value is `10` if not pass any value to it.
 
 - if_only_pic   

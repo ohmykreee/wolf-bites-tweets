@@ -47,7 +47,7 @@ test_query = json.loads(test_query_raw.content)
 if 'errors' in test_query:
     print('[error] twitter api error, message: {}'.format(test_query['errors'][0]['message']))
     exit(1)
-print('[debug] test token validity success')
+print('[info] test token validity success')
 
 # start get data and store json file to $env_github_workspace/output
 if env_get_type == 'tweets':
