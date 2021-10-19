@@ -12,12 +12,12 @@ def get(screen_name, query_header, count, only_pic, output_dic):
     query_list_raw = requests.get('https://api.twitter.com/1.1/favorites/list.json', headers=query_header, params=query_payload)
     query_list = json.loads(query_list_raw.content)
     if 'errors' in query_list:
-        print('[error] twitter api error, message: {}'.format(query_list['errors'][0]['message']))
+        print('[error] get_likes: twitter api error, message: {}'.format(query_list['errors'][0]['message']))
         exit(3)
     if len(query_list) == 0:
-        print('[error] get_likes.get(): query_list is empty')
+        print('[error] get_likes: get_likes.get(): query_list is empty')
         exit(3)
-    print('[info] successfully get {} tweets from get_likes.get()'.format(len(query_list)))
+    print('[info] get_likes: successfully get {} tweets from get_likes.get()'.format(len(query_list)))
 
     # if only_pic is True, omit tweets that don't contain media
     if only_pic:
@@ -36,4 +36,4 @@ def get(screen_name, query_header, count, only_pic, output_dic):
     json_file = open(output_dic + '/output/{}_likes.json'.format(screen_name), 'w+')
     json_file.write(output_json)
     json_file.close()
-    print('[info] successfully write output_json to {}/output/{}_likes.json'.format(output_dic, screen_name))
+    print('[info] get_likes: successfully write output_json to {}/output/{}_likes.json'.format(output_dic, screen_name))

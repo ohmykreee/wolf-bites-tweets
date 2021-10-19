@@ -20,7 +20,7 @@ inputs:
     description: 'How many tweets you want to get.'
     default: '10'
     required: false
-  if_only_pic:
+  if_only_media:
     description: 'Do you want your result only contain tweets that contain media.'
     default: false
     required: false
