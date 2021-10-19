@@ -18,13 +18,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run wolf-bites-tweets
-        uses: ohmykreee/wolf-bites-tweets@1.0.5
+        uses: ohmykreee/wolf-bites-tweets@1.0.6
         with:
           screen_name: kreeejiang
           bearer_token: ${{ secrets.BEARER_TOKEN }}
           get_type: both
-          count: 50
-          if_only_pic: true
+          count: 50,100
+          if_only_media: true
 ```
 - screen_name   
 Normally it is `@kreeejiang` without `@`.    
@@ -39,12 +39,13 @@ Can pass `tweets`, `likes`, `both`, which means get infomation of tweets only, l
 The default value is `tweets` if not pass any value to it.
 
 - count   
-The number it will get from the API, both for `get_tweets` and `get_likes`. Please notice that there are max limitation in API `/2/users/:id/tweets` (100) and `/1.1/favorites/list.json` (200) and min limitation in `/2/users/:id/tweets` (5), or you will get error when running.   
+The number of tweets it will get from the API. If you just pass one number, it will be used both in `get_tweets` and `get_likes`. If you want to set different number to `get_tweets` and `get_likes`, please pass value like `50,100` (The first number will be used in `get_tweets`, the second number will be used in `get_likes`, **DO NOT use blank space, DO NOT pass third number to it** or you will get error.)    
+Please notice that there are max limitation in API `/2/users/:id/tweets` (100) , `/1.1/favorites/list.json` (200) and min limitation in `/2/users/:id/tweets` (5), or you will get error.   
 For more information please refer to Twitter's official API documents [GET /2/users/:id/tweets](https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets) and [GET /1.1/favorites/list.json](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/post-and-engage/api-reference/get-favorites-list).   
 The default value is `10` if not pass any value to it.
 
-- if_only_pic   
-Can pass `true` or `false`. When set to `true`, it will remove tweets that don't contain any media (which means this tweet only have text) **After getting the data from Twitter API**, which means you will get objects less than the number you set in the `count` section.   
+- if_only_media   
+Can pass `true` or `false`. When set to `true`, it will remove tweets that don't contain any media (this tweet only has text) **After getting the data from Twitter API**, which means you will get objects less than the number you set in the `count` section.   
 The default value is `false` if not pass any value to it.
 
 You can go to the example repository using this GitHub action: https://github.com/ohmykreee/WBT-for-kblog/
