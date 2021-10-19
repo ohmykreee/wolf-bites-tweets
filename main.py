@@ -12,7 +12,7 @@ import get_tweets
 # env_screen_name = envLines[0][:-1]
 # env_bearer_token = envLines[1][:-1]
 # env_get_type = envLines[2][:-1]
-# env_count = envLines[3][:-1].split(' ')
+# env_count = envLines[3][:-1].split(',')
 # env_only_pic = bool(envLines[4][:-1])
 # env_github_workspace = envLines[5]
 # os.environ["https_proxy"] = 'http://localhost:7890'
@@ -22,7 +22,7 @@ env_github_workspace = os.environ.get("GITHUB_WORKSPACE")
 env_screen_name = os.environ.get("INPUT_SCREEN_NAME")
 env_bearer_token = os.environ.get("INPUT_BEARER_TOKEN")
 env_get_type = os.environ.get("INPUT_GET_TYPE")
-env_count = os.environ.get("INPUT_COUNT").split(' ')
+env_count = os.environ.get("INPUT_COUNT").split(',')
 env_only_pic = os.environ.get("INPUT_IF_ONLY_MEDIA")
 
 # verify env variable
