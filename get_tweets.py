@@ -54,6 +54,9 @@ def get(screen_name, query_header, count, only_pic, output_dic):
     if only_pic:
         print('[info] get_tweets: get_tweets: omit {} tweets that do not contain any media'.format(len(query_list['data']) - len(query_list_output['data'])))
 
+    # add user data to query_list_output
+    query_list_output['user'] = query_user['data']
+
     # output file to $github_workspace/output/$twitter_tweets.json
     output_json = json.dumps(query_list_output)
     if not os.path.exists(output_dic + '/output'):
