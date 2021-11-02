@@ -6,25 +6,29 @@ branding:
   color: 'purple'
 
 inputs:
-  screen_name:
+  screen-name:
     description: 'The screen name of the twitter account.'
     required: true
-  bearer_token:
+  bearer-token:
     description: 'The bearer token from your twitter dev account.'
     required: true
-  get_type:
+  get-type:
     description: 'What kind of data you want to get.[tweets, likes, both]'
     default: 'tweets'
     required: false
   count:
     description: 'How many tweets you want to get.'
-    default: '10'
+    default: '10,10'
     required: false
-  if_only_media:
+  if-only-media:
     description: 'Do you want your result only contain tweets that contain media.'
     default: false
     required: false
+  output-dir:
+    description: 'The directory name that the json file will store'
+    default: 'output'
+    required: false
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: node12
+  main: index.js
