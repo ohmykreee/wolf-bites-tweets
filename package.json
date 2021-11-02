@@ -1,0 +1,30 @@
+{
+  "name": "wolf-bites-tweets",
+  "version": "2.0.0",
+  "description": "A GitHub action package that gets a specific Twitter account's tweeted or liked tweets from official Twitter API and stores as json file.",
+  "main": "index.js",
+  "scripts": {
+    "test": "powershell ./test-local.ps1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ohmykreee/wolf-bites-tweets.git"
+  },
+  "keywords": [
+    "twitter",
+    "twitter-api"
+  ],
+  "author": "Kreee",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ohmykreee/wolf-bites-tweets/issues"
+  },
+  "homepage": "https://github.com/ohmykreee/wolf-bites-tweets#readme",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "yargs": "^17.2.1"
+  },
+  "devDependencies": {
+    "global-tunnel-ng": "^2.7.1"
+  }
+}

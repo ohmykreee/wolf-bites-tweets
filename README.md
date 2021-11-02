@@ -1,5 +1,8 @@
 # Wolf-Bites-Tweets
 
+![](https://github.com/ohmykreee/WBT-for-kblog/actions/workflows/test-workflow.yml/badge.svg)
+
+
 ## What is this?
 ~~A wolf bites every tweets he sees.~~   
 
@@ -52,4 +55,6 @@ You can go to the example repository using this GitHub action: https://github.co
 ## Other
 - Work better with [ohmykreee/wolf-chews-tweets](https://github.com/ohmykreee/wolf-chews-tweets)
 
-- 项目背后的故事（正在编写中，将发布在 [Kreee's Blog](https://blog.ohmykreee.top)）
+- 项目背后的故事（v1）：https://blog.ohmykreee.top/article/notes-of-developing-wbt-and-wct/
+
+- Wolf-Bites-Tweets v2.0.0 开发小记：
