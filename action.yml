@@ -30,5 +30,5 @@ inputs:
     required: false
 
 runs:
-  using: 'node12'
-  image: 'index.js'
+  using: node12
+  main: index.js
