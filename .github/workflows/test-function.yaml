@@ -15,8 +15,8 @@ jobs:
         with:
           node-version: 12
 
-      - name: Prepare workspace
-        run: npm install
+      # - name: Prepare workspace
+      #   run: npm install
 
       - name: Run test
         run: node ./index.js --local --screen-name=kreeejiang --bearer-token=${{secrets.BEARER_TOKEN}} --get-type=both --count=10,10 --if-only-media=true --output-dir=test
@@ -35,8 +35,8 @@ jobs:
         with:
           node-version: 12
 
-      - name: Prepare workspace
-        run: npm install
+      # - name: Prepare workspace
+      #   run: npm install
 
       - name: Run test
         run: node ./index.js
