@@ -35,9 +35,6 @@ jobs:
         with:
           node-version: 12
 
-      - name: Prepare workspace
-        run: npm install
-
       - name: Run test
         run: node ./index.js
         env:
