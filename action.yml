@@ -30,5 +30,10 @@ inputs:
     required: false
 
 runs:
-  using: node12
-  main: index.js
+  using: "composite"
+  steps:
+    - run: npm install --production
+      shell: bash
+
+    - run: node ./index.js
+      shell: bash

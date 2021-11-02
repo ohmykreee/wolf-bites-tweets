@@ -24,5 +24,7 @@
     "@actions/core": "^1.6.0",
     "yargs": "^17.2.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "global-tunnel-ng": "^2.7.1"
+  }
 }
