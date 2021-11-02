@@ -9,7 +9,7 @@ const likes_path = `${process.env.GITHUB_WORKSPACE}/test/kreeejiang_likes.json`
 
 fs.stat(tweets_path, function (err, stats) {
     if (err === null) {
-        core.notice(`tweets json file exists, with size ${stats.size} bytes`)
+        core.notice(`tweets json file exists, with size ${stats.size} bytes.`)
     } else {
         core.setFailed(`Test get_tweets failed: ${err.message}`)
         exit()
@@ -18,7 +18,7 @@ fs.stat(tweets_path, function (err, stats) {
 
 fs.stat(likes_path, function (err, stats) {
     if (err === null) {
-        core.notice(`likes json file exists, with size ${stats.size} bytes`)
+        core.notice(`likes json file exists, with size ${stats.size} bytes.`)
     } else {
         core.setFailed(`Test get_likes failed: ${err.message}`)
         exit()

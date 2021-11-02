@@ -19,7 +19,35 @@ jobs:
         run: npm install
 
       - name: Run test
-        run: node ./index.js --local --screen-name=kreeejiang --bearer-token=${{secrets.BEARER_TOKEN}} --get-type=both --count=10,20 --if-only-media=true --output-dir=test
+        run: node ./index.js --local --screen-name=kreeejiang --bearer-token=${{secrets.BEARER_TOKEN}} --get-type=both --count=10,10 --if-only-media=true --output-dir=test
+
+      - name: Check test
+        run: node ./test-for-actions.js
+
+  actions-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+
+      - name: Setup Node 
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+
+      - name: Prepare workspace
+        run: npm install
+
+      - name: Run test
+        run: node ./index.js
+        env:
+          INPUT_BEARER-TOKEN: ${{secrets.BEARER_TOKEN}}
+          INPUT_SCREEN-NAME: kreeejiang
+          INPUT_GET-TYPE: both
+          INPUT_COUNT: 10,10
+          INPUT_IF-ONLY-MEDIA: true
+          INPUT_OUTPUT-DIR: test
+
 
       - name: Check test
         run: node ./test-for-actions.js
