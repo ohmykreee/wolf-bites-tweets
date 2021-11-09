@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run wolf-bites-tweets
-        uses: ohmykreee/wolf-bites-tweets@2.0.0
+        uses: ohmykreee/wolf-bites-tweets@v2
         with:
           screen-name: kreeejiang
           bearer-token: ${{ secrets.BEARER_TOKEN }}
