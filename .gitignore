@@ -69,3 +69,4 @@ typings/
 
 env.txt
 test-local.ps1
+output/
