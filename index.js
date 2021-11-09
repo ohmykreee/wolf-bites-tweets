@@ -7,31 +7,32 @@ const fs = require('fs')
 const { exit } = require('process');
 
 // test if run locally or in github actions
-let argv = {}
 let if_local
-const process_argv = process.argv.slice(2)
-if (process_argv.includes('--local')) {
-    const yargs = require('yargs')
-    argv = yargs(process.argv.slice(2)).argv
+if (process.argv.includes('--local')) {
     if_local = true
     wbt_init()
 } else {
-    argv = {
-        bearerToken: core.getInput('bearer-token', { required: true }),
-        screenName: core.getInput('screen-name', { required: true }),
-        getType: core.getInput('get-type', { required: false }),
-        count: core.getInput('count', { required: false }),
-        ifOnlyMedia: core.getInput('if-only-media', { required: false }),
-        outputDir: core.getInput('output-dir', { required: false }),
-    }
     if_local = false
     wbt_init()
 }
 
-
 function wbt_init() {
+    let argv = {}
+    if (if_local) {
+        const yargs = require('yargs')
+        argv = yargs(process.argv.slice(2)).argv
+    } else {
+        argv = {
+            bearerToken: core.getInput('bearer-token', { required: true }),
+            screenName: core.getInput('screen-name', { required: true }),
+            getType: core.getInput('get-type', { required: false }),
+            count: core.getInput('count', { required: false }),
+            ifOnlyMedia: core.getInput('if-only-media', { required: false }),
+            outputDir: core.getInput('output-dir', { required: false }),
+        }
+    }
+    
     const config = {}
-
     //verify variable and assign value
     if (argv.bearerToken == '' || argv.bearerToken === undefined) {
         custom_log('error', 'local_init: bearer-token is empty.')
