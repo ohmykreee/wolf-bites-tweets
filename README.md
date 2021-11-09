@@ -38,7 +38,7 @@ The Bearer token from your Twitter dev account. You can pass it through secrets:
 For more information about Bearer token please refer to Twitter's official API documents: [Authentication: Using and generating Bearer Tokens](https://developer.twitter.com/en/docs/authentication/oauth-2-0/bearer-tokens).
 
 - `get-type`   
-Accept `tweets`, `likes`, `both`, which means get infomation of tweets only, likes only, both tweets and likes, and save separately in `${scree-nname}_tweets.json` and `${screen-name}_likes.json`.   
+Accept `tweets`, `likes`, `both`, which means get infomation of tweets only, likes only, both tweets and likes, and save separately in `${screen-name}_tweets.json` and `${screen-name}_likes.json`.   
 The default value is `tweets` if not be specified.
 
 - `count`   
