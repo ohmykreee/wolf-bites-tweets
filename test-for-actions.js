@@ -12,6 +12,7 @@ fs.stat(tweets_path, function (err, stats) {
         core.notice(`tweets json file exists, with size ${stats.size} bytes.`)
     } else {
         core.setFailed(`Test get_tweets failed: ${err.message}`)
+        exit()
     }
 })
 
@@ -20,5 +21,6 @@ fs.stat(likes_path, function (err, stats) {
         core.notice(`likes json file exists, with size ${stats.size} bytes.`)
     } else {
         core.setFailed(`Test get_likes failed: ${err.message}`)
+        exit()
     }
 })
